@@ -528,7 +528,39 @@ assert s1 is s2
 **Descripción:**  
 Divide tu aplicación en módulos o componentes que puedan ser desarrollados, probados y mantenidos de forma independiente.
 
-**Ejemplo (JavaScript - módulos ES6):**
+Escribir código modular implica dividir la aplicación en componentes independientes que puedan desarrollarse, probarse y mantenerse de forma separada. Esto no solo mejora la organización del código, sino que también facilita la reutilización y la integración de nuevas funcionalidades sin afectar otras partes del sistema. En Java, este enfoque se logra mediante la estructuración en paquetes y clases, y a partir de Java 9 también mediante el sistema de módulos.
+
+A continuación, se muestra un ejemplo sencillo utilizando paquetes:
+
+**Archivo: com/example/math/MathOperations.java**
+```java
+package com.example.math;
+
+public class MathOperations {
+    public static int sum(int a, int b) {
+        return a + b;
+    }
+}
+```
+
+**Archivo: com/example/main/Main.java**
+```java
+package com.example.main;
+
+import com.example.math.MathOperations;
+
+public class Main {
+    public static void main(String[] args) {
+        int result = MathOperations.sum(2, 3);
+        System.out.println("Result: " + result);
+    }
+}
+```
+
+En este ejemplo, la clase `MathOperations` se ubica en el paquete `com.example.math` y encapsula la funcionalidad de sumar dos números. La clase `Main` en el paquete `com.example.main` importa y utiliza esta funcionalidad. Esto permite desarrollar, probar y mantener cada módulo de forma independiente, promoviendo un código más limpio y escalable.
+
+A continuación, se muestra un ejemplo usando **JavaScript - módulos ES6:**
+
 ```javascript
 // archivo math.js
 export function sumar(a, b) {
