@@ -322,6 +322,52 @@ public interface Repositorio<T> {
 **Descripción:**  
 La composición permite combinar comportamientos sin los problemas de rigidez y alta dependencia que puede traer la herencia.
 
+La **composición** consiste en combinar funcionalidades de distintas clases creando instancias de ellas, en lugar de extenderlas mediante la herencia. Esto evita estructuras rígidas y dependencias fuertes, permitiendo que cada componente se desarrolle, pruebe y reemplace de forma independiente. En otras palabras, en vez de forzar a una clase a heredar características que quizá no sean necesarias, se integra la funcionalidad requerida a través de atributos, lo que ofrece mayor flexibilidad y modularidad.
+
+**Ejemplo en Python:**
+
+*Ejemplo con herencia (menos recomendado):*
+```python
+# Ejemplo malo: Uso de herencia cuando no es necesaria
+class Engine:
+    def start(self):
+        print("El motor ha arrancado.")
+
+class Car(Engine):  # Hereda de Engine, aunque un coche "tiene" un motor, no "es" un motor
+    def drive(self):
+        print("El coche está en movimiento.")
+
+# Uso
+coche = Car()
+coche.start()
+coche.drive()
+```
+
+*Ejemplo con composición (más sugerente):*
+```python
+# Ejemplo bueno: Uso de composición para integrar funcionalidades
+class Engine:
+    def start(self):
+        print("El motor ha arrancado.")
+
+class Car:
+    def __init__(self, engine):
+        self.engine = engine  # Composición: Car tiene un motor
+    
+    def drive(self):
+        self.engine.start()  # Se utiliza el motor para arrancar
+        print("El coche está en movimiento.")
+
+# Uso
+motor = Engine()
+coche = Car(motor)
+coche.drive()
+```
+
+En este último ejemplo, el `Car` recibe una instancia de `Engine` y delega la responsabilidad de arrancar al motor, lo que permite cambiar o actualizar la funcionalidad del motor sin modificar la clase `Car`.
+
+```
+
 **Ejemplo (JavaScript):**
 ```javascript
 // Malo: Herencia profunda
@@ -345,7 +391,6 @@ function crearCoche() {
     conducir() { /* ... */ }
   });
 }
-```
 
 ---
 
