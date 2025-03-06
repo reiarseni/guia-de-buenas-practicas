@@ -366,8 +366,6 @@ coche.drive()
 
 En este último ejemplo, el `Car` recibe una instancia de `Engine` y delega la responsabilidad de arrancar al motor, lo que permite cambiar o actualizar la funcionalidad del motor sin modificar la clase `Car`.
 
-```
-
 **Ejemplo (JavaScript):**
 ```javascript
 // Malo: Herencia profunda
@@ -391,6 +389,7 @@ function crearCoche() {
     conducir() { /* ... */ }
   });
 }
+```
 
 ---
 
